@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {UserInterface} from "./user.interface";
+import {ItemInterface} from "./item.interface";
+import {db} from "./db";
+import {CartService} from "./cart.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'marketplace';
+
+  user: UserInterface | null = null;
+
+  item: ItemInterface[] = db;
+  cart: ItemInterface[];
+
+  constructor(private cartService: CartService) {
+    this.cart = this.cartService.cart;
+  }
+
+  login() {
+
+  }
+
+  logout() {
+
+  }
 }
